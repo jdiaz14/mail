@@ -32,8 +32,7 @@
         $mail->Subject = 'Asunto del correo electrónico';
         $mail->Body = 'Cuerpo del correo electrónico';
 
-        // Adjuntar un archivo (opcional)
-        //$mail->addAttachment('ruta/al/archivo.pdf');
+    
 
         // Enviar el correo electrónico
         $mail->send();
