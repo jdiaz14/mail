@@ -1,21 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mail </title>
-  <link rel="stylesheet" href="style.css">
-  
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mail</title>
+    <style>
+      body {
+        background-color: #f2f2f2;
+      }
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px #ccc;
+        width: 50%;
+        margin: 0 auto;
+      }
+      input[type="text"], input[type="email"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 5px #ccc;
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="enviar_correo.php">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
 
-</head>
-<body>
-  <form action="https://hilarious-marshmallow-79a459.netlify.app/enviar_correo.php" method="POST">
-    <label for="destinatario">Correo del destinatario:</label>
-    <input type="email" name="destinatario" required>
-    <button type="submit">Enviar correo</button>
-  </form>
-  <meta http-equiv="refresh" content="1; url=https://hilarious-marshmallow-79a459.netlify.app/enviar_correo.php" />
-    
-</body>
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" required></textarea>
+
+      <input type="submit" value="Enviar correo">
+    </form>
+  </body>
 </html>
