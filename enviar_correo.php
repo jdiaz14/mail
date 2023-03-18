@@ -1,36 +1,46 @@
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Envío de correo electrónico</title>
+</head>
+<body>
+    <?php
+    // Cargar PHPMailer
+    require 'vendor/autoload.php';
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['enviar'])) {
-    // Obtener los datos del formulario HTML
-    $destinatario = $_POST['destinatario'];
-
-    // Configurar PHPMailer
+    // Crear una nueva instancia de PHPMailer
     $mail = new PHPMailer(true);
 
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'juli.andgu16@gmail.com';
-    $mail->Password = 'BarceloNa20-';
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
-
-    $mail->setFrom('Juli.andgu16@gmail.com', 'Julian Diaz');
-    $mail->addAddress($destinatario);
-    $mail->Subject = 'Prueba phpmailer';
-    $mail->Body = 'esto es una prueba';
-
     try {
+        // Configurar el servidor SMTP de Mailtrap
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = '520ea93e2a1086:225633920252f6';
+        $mail->Password = 'Julibdm811';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 2525;
+
+        // Configurar el correo electrónico
+        $mail->setFrom('juli.andgu16@gmail.com', 'Julian Diaz');
+        $mail->addAddress('jujudidiaz@gmail.com', 'Andres Guevara');
+        $mail->Subject = 'Asunto del correo electrónico';
+        $mail->Body = 'Cuerpo del correo electrónico';
+
+        // Adjuntar un archivo (opcional)
+        //$mail->addAttachment('ruta/al/archivo.pdf');
+
+        // Enviar el correo electrónico
         $mail->send();
-        echo 'Correo enviado exitosamente';
+        echo 'El correo electrónico se envió correctamente';
     } catch (Exception $e) {
-        echo 'Error al enviar el correo: ' . $mail->ErrorInfo;
+        echo 'No se pudo enviar el correo electrónico. Error: ' . $mail->ErrorInfo;
     }
-}
-?>
+    ?>
+</body>
+</html>
