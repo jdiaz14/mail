@@ -21,7 +21,7 @@ try {
 
     //  correo electrónico
     $mail->setFrom($_POST['email'], $_POST['nombre']);
-    $mail->addAddress('destinatario@example.com', 'Destinatario');
+    $mail->addAddress('jujudidiaz@gmail.com', 'julian');
     $mail->Subject = 'Nuevo mensaje del formulario de contacto';
     $mail->Body = 'Nombre: ' . $_POST['nombre'] . '<br>' .
                   'Email: ' . $_POST['email'] . '<br>' .
