@@ -24,7 +24,7 @@ try {
     $mail->addAddress('jujudidiaz@gmail.com', 'julian');
     $mail->Subject = 'Nuevo mensaje del formulario de contacto';
     $mail->Body = 'Nombre: ' . $_POST['nombre'] . '<br>' .
-                  'Email: ' . $_POST['email'] . '<br>' .
+                  'Email: ' . $_POST['correo'] . '<br>' .
                   'Mensaje: ' . $_POST['mensaje'];
 
     // Enviar el correo electrónico
