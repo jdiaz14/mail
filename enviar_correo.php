@@ -33,4 +33,17 @@ try {
 } catch (Exception $e) {
     echo 'No se pudo enviar el correo electrónico. Error: ' . $mail->ErrorInfo;
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verifica el Recaptcha
+    $recaptcha_secret = '6LdxsBElAAAAAIIyVCxeQ73KVVK_3d1nfXtJB82M';
+    $recaptcha_response = $_POST['g-recaptcha-response'];
+    $recaptcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$recaptcha_secret&response=$recaptcha_response");
+    $recaptcha = json_decode($recaptcha);
+    if ($recaptcha->success) {
+      // El Recaptcha es válido, procesa el formulario
+    } else {
+      // El Recaptcha es inválido, muestra un mensaje de error
+      $error = 'El Recaptcha no se ha completado correctamente.';
+    }
+  }
 ?>
